@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet, Dimensions, PixelRatio, Platform } from "react-native"
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp
@@ -17,12 +17,13 @@ const FONTS = {
 }
 
 const COLORS = {
-    PRIMARY :"#270B36",
+    PRIMARY: "#270B36",
     WHITE: "#FFFFFF",
     BLACK: "#000000",
     BACKGROUND: "#FFFFFF",
     GREY: "#d3d3d3",
-    DANGER: "#bb2124"
+    DANGER: "#bb2124",
+    SUCCESS: "#00AB2C",
 }
 
 const COMMON_STYLES = StyleSheet.create({
@@ -34,48 +35,31 @@ const COMMON_STYLES = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    h1: {
-        fontFamily: FONTS.POPPINS_700,
-        color: COLORS.BLACK,
-        fontSize: hp(2)
-    },
-    h2: {
-        fontFamily: FONTS.POPPINS_600,
-        color: COLORS.BLACK,
-        fontSize: hp(2)
-    },
-    h3: {
-        fontFamily: FONTS.POPPINS_500,
-        color: COLORS.BLACK,
-        fontSize: hp(2)
-    },
-    h4: {
-        fontFamily: FONTS.POPPINS_400,
-        color: COLORS.BLACK,
-        fontSize: hp(2)
-    },
-    h5: {
-        fontFamily: FONTS.POPPINS_300,
-        color: COLORS.BLACK,
-        fontSize: hp(2)
-    },
-    h6: {
-        fontFamily: FONTS.POPPINS_200,
-        color: COLORS.BLACK,
-        fontSize: hp(2)
-    },
-    h7: {
-        fontFamily: FONTS.POPPINS_100,
-        color: COLORS.BLACK,
-        fontSize: hp(2)
-    },
-
 })
+
+enum SIZE {
+    WIDTH = Dimensions.get('screen').width,
+    HEIGHT = Dimensions.get('screen').height,
+}
+
+// based on iphone 5s's scale
+const scale = SIZE.WIDTH / 320;
+
+const normalize = (size: any) => {
+    const newSize = size * scale
+    if (Platform.OS === 'ios') {
+        return Math.round(PixelRatio.roundToNearestPixel(newSize))
+    } else {
+        // return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+        return Math.round(PixelRatio.roundToNearestPixel(newSize))
+    }
+}
 
 export {
     wp,
     hp,
     FONTS,
     COLORS,
-    COMMON_STYLES
+    COMMON_STYLES,
+    normalize
 }

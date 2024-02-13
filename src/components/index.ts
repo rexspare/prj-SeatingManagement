@@ -6,6 +6,10 @@ import Spacer from "./spacer";
 import Loader from "./loader";
 import LoaderRoot from "./loaderRoot";
 import PrimaryButton from "./primaryButton";
+import AddTableMenu from "./addTableMenu";
+
+export * from './tables'
+export * from './modals'
 
 export {
     If,
@@ -15,5 +19,6 @@ export {
     Spacer,
     Loader,
     LoaderRoot,
-    PrimaryButton
+    PrimaryButton,
+    AddTableMenu
 }

@@ -8,22 +8,19 @@ import { TOOLS } from '../assets/enums';
  * State Structure
  */
 export interface IBoardState {
-  // State values
-  selectedTool: string;
-  setSelectedTool: Function;
-  resizingIndex: number;
-  setResizingIndex: Function;
-  currentPost: any;
-  setCurrentPost: Function;
+  tablesList: any;
+  setTablesList: Function;
+
+  selectedTable: any;
+  setSelectedTable: Function;
 }
 
 const initialState: IBoardState = {
-  selectedTool: TOOLS.CAMERA,
-  setSelectedTool: () => { },
-  resizingIndex: 0,
-  setResizingIndex: () => { },
-  currentPost: {},
-  setCurrentPost: () => { }
+
+  tablesList: [],
+  setTablesList: () => { },
+  selectedTable: {},
+  setSelectedTable: () => { },
 };
 
 /**
@@ -31,10 +28,8 @@ const initialState: IBoardState = {
  */
 export const useBoard = create<IBoardState>((set, get) => ({
   ...initialState,
-
-  setSelectedTool: (item: any) => set({ selectedTool: item }),
-  setResizingIndex: (item: any) => set({ resizingIndex: item }),
-  setCurrentPost: (item: any) => set({ currentPost: item }),
+  setTablesList: (item: any) => set({ tablesList: item }),
+  setSelectedTable: (item: any) => set({ selectedTable: item }),
 }));
 
 /**
