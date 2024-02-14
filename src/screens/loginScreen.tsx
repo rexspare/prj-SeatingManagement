@@ -46,7 +46,9 @@ const LoginScreen: FC = () => {
 
                     <PrimaryButton
                         title='Login'
+                        filled={true}
                         onPress={() => navigation.navigate(SCREENS.TABLE_VIEW)}
+                        style={styles.btn}
                     />
 
                 </Layout>
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     btn: {
-
+        width: '50%'
     }
 
 })

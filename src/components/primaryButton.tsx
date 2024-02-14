@@ -23,6 +23,7 @@ const PrimaryButton: React.FC<primaryButtonProps> = (props) => {
         <TouchableOpacity
             style={[
                 styles.main,
+                props?.icon == undefined ? { width: '100%', } : { paddingHorizontal: '5%', height: hp(6.4) },
                 props.style,
             ]}
             activeOpacity={0.8}
@@ -54,11 +55,12 @@ export default React.memo(PrimaryButton)
 
 const styles_ = (filled: any, disabled: any) => StyleSheet.create({
     main: {
-        width: '50%',
+
         flexDirection: 'row',
         alignSelf: 'center',
-        marginVertical: 15,
-        backgroundColor: COLORS.PRIMARY,
+        marginVertical: hp(1),
+        backgroundColor: filled ? disabled ? COLORS.BLACK : COLORS.PRIMARY
+            : COLORS.BACKGROUND,
         ...COMMON_STYLES.center_,
         height: hp(6),
         borderRadius: hp(0.6),
@@ -66,7 +68,8 @@ const styles_ = (filled: any, disabled: any) => StyleSheet.create({
         borderColor: disabled ? COLORS.BLACK : COLORS.PRIMARY
     },
     title: {
-        color: COLORS.WHITE,
+        color: filled ? COLORS.WHITE
+            : disabled ? COLORS.BLACK : COLORS.PRIMARY,
         fontSize: 14,
         fontFamily: FONTS.POPPINS_600
     }
