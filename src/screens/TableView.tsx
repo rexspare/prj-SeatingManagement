@@ -2,41 +2,55 @@ import React, { FC, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Draggable from 'react-native-draggable';
 import { COLORS, hp, wp } from '../assets/styles/styleGuide';
-import { AddTableMenu, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwoPerson } from '../components';
+import { AddTableMenu, ChairStatusModal, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwoPerson } from '../components';
 import { boardStateSelectors, useBoard } from '../states/board';
 
 
 const TableView: FC = () => {
     const tablesList = useBoard(boardStateSelectors.tablesList)
     const setSelectedTable = useBoard(boardStateSelectors.setSelectedTable)
+    const setSelectedChair = useBoard(boardStateSelectors.setSelectedChair)
 
     const [isModalVisible, setisModalVisible] = useState(false)
+    const [isChairModalVisible, setisChairModalVisible] = useState(false)
 
     const getTable = (table: any) => {
         switch (table.type) {
             case "2P":
                 return <TwoPerson
+                    data={table}
                     onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "3P":
                 return <ThreePerson
+                    data={table}
                     onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "4P":
                 return <FourPerson
+                    data={table}
                     onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "6P":
                 return <SixPerson
+                    data={table}
                     onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "8P":
                 return <EightPerson
+                    data={table}
                     onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             default:
                 return <TwoPerson
+                    data={table}
                     onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
         }
     }
@@ -44,6 +58,12 @@ const TableView: FC = () => {
     const handleSelectTable = (table: any) => {
         setSelectedTable(table)
         setisModalVisible(true)
+    }
+
+    const handleSelectChair = (table: any, index: number) => {
+        setSelectedTable(table)
+        setSelectedChair(index)
+        setisChairModalVisible(true)
     }
 
     return (
@@ -56,8 +76,8 @@ const TableView: FC = () => {
                         return (
                             <Draggable
                                 key={index}
-                                x={wp(45)}
-                                y={hp(45)}
+                                x={table.xAxis}
+                                y={table.yAxis}
                                 minX={0}
                                 maxX={wp(100) - hp(15)}
                                 minY={0}
@@ -79,6 +99,10 @@ const TableView: FC = () => {
             <TableDetailModal
                 isVisible={isModalVisible}
                 onClose={() => setisModalVisible(false)}
+            />
+            <ChairStatusModal
+                isVisible={isChairModalVisible}
+                onClose={() => setisChairModalVisible(false)}
             />
         </View>
     )

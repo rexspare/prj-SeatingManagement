@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { IUser } from '../models/user';
 import { createSelectors } from './common';
 import { TOOLS } from '../assets/enums';
+import { TABLES } from '../data';
 
 
 /**
@@ -13,14 +14,19 @@ export interface IBoardState {
 
   selectedTable: any;
   setSelectedTable: Function;
+
+  selectedChair: any;
+  setSelectedChair: Function;
 }
 
 const initialState: IBoardState = {
 
-  tablesList: [],
+  tablesList: TABLES,
   setTablesList: () => { },
   selectedTable: {},
   setSelectedTable: () => { },
+  selectedChair: undefined,
+  setSelectedChair: () => { },
 };
 
 /**
@@ -30,6 +36,7 @@ export const useBoard = create<IBoardState>((set, get) => ({
   ...initialState,
   setTablesList: (item: any) => set({ tablesList: item }),
   setSelectedTable: (item: any) => set({ selectedTable: item }),
+  setSelectedChair: (item: any) => set({ selectedChair: item }),
 }));
 
 /**

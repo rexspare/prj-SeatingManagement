@@ -1,36 +1,45 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { FC } from 'react'
 import { COLORS, hp } from '../../assets/styles/styleGuide'
+import { getAssetColor, getChairColor } from '../../utils/myUtils';
 
 interface props {
     size?: number;
     disabled?: boolean;
-    onPressTable?: Function
+    onPressTable?: Function;
+    data?: any;
+    onPressChair?: Function;
 }
 
 const SixPerson: FC<props> = (props) => {
     const {
         size = hp(8),
         disabled = false,
-        onPressTable = () => { }
+        onPressTable = () => { },
+        data = {},
+        onPressChair = () => { },
     } = props
 
-    const styles = styles_(size, disabled)
+    const styles = styles_(size, disabled, data)
 
     return (
         <View style={styles.main}>
 
             <View style={styles.rowChair}>
                 <TouchableOpacity
-                    style={styles.chair}
-                    onPress={() => alert('CHAIR 1')}
+                    style={[styles.chair, {
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 0),
+                    }]}
+                    onPress={() => onPressChair(0)}
                     hitSlop={{ top: 10, bottom: 0, left: 5, right: 5 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={styles.chair}
-                    onPress={() => alert('CHAIR 1')}
+                    style={[styles.chair, {
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 1),
+                    }]}
+                    onPress={() => onPressChair(1)}
                     hitSlop={{ top: 10, bottom: 0, left: 5, right: 5 }}
                     disabled={disabled}
                 >
@@ -40,8 +49,10 @@ const SixPerson: FC<props> = (props) => {
 
             <View style={styles.row}>
                 <TouchableOpacity
-                    style={styles.chair2}
-                    onPress={() => alert('CHAIR 2')}
+                    style={[styles.chair2, {
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 2),
+                    }]}
+                    onPress={() => onPressChair(2)}
                     hitSlop={{ top: 0, bottom: 0, left: 10, right: 0 }}
                     disabled={disabled}
                 >
@@ -55,8 +66,10 @@ const SixPerson: FC<props> = (props) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styles.chair2}
-                    onPress={() => alert('CHAIR 2')}
+                    style={[styles.chair2, {
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 3),
+                    }]}
+                    onPress={() => onPressChair(3)}
                     hitSlop={{ top: 0, bottom: 0, left: 0, right: 10 }}
                     disabled={disabled}
                 >
@@ -65,16 +78,20 @@ const SixPerson: FC<props> = (props) => {
 
             <View style={styles.rowChair}>
                 <TouchableOpacity
-                    style={styles.chair}
-                    onPress={() => alert('CHAIR 1')}
+                    style={[styles.chair, {
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 4),
+                    }]}
+                    onPress={() => onPressChair(4)}
                     hitSlop={{ top: 0, bottom: 10, left: 5, right: 5 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styles.chair}
-                    onPress={() => alert('CHAIR 1')}
+                    style={[styles.chair, {
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 5),
+                    }]}
+                    onPress={() => onPressChair(5)}
                     hitSlop={{ top: 0, bottom: 10, left: 5, right: 5 }}
                     disabled={disabled}
                 >
@@ -88,7 +105,7 @@ const SixPerson: FC<props> = (props) => {
 
 export default SixPerson
 
-const styles_ = (size: any, disabled: boolean) => StyleSheet.create({
+const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
     main: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -96,7 +113,7 @@ const styles_ = (size: any, disabled: boolean) => StyleSheet.create({
     table: {
         width: size,
         height: size / 2,
-        backgroundColor: disabled ? COLORS.BLACK : COLORS.SUCCESS,
+        backgroundColor: disabled ? COLORS.BLACK : getAssetColor(data?.tableStatus),
         margin: (size * 0.1) > 5 ? 5 : size * 0.1,
     },
     row: {

@@ -3,6 +3,8 @@ import React from 'react'
 import { EightPerson, FourPerson, SixPerson, ThreePerson, TwoPerson } from '.'
 import { COLORS, FONTS, hp, normalize } from '../assets/styles/styleGuide'
 import { boardStateSelectors, useBoard } from '../states/board'
+import { generateRandomId } from '../utils/myUtils'
+import { TABLE_2P, TABLE_3P, TABLE_4P, TABLE_6P, TABLE_8P } from '../data'
 
 const AddTableMenu = () => {
   const tablesList = useBoard(boardStateSelectors.tablesList)
@@ -42,7 +44,47 @@ const AddTableMenu = () => {
   ]
 
   const handleAddtable = (table: any) => {
-    setTablesList([...tablesList, table])
+    let mTables: any = []
+    const id = generateRandomId(32)
+
+    switch (table?.type) {
+      case "2P":
+        mTables = [...tablesList, {
+          id: id,
+          ...TABLE_2P
+        }]
+        break;
+      case "3P":
+        mTables = [...tablesList, {
+          id: id,
+          ...TABLE_3P
+        }]
+        break;
+      case "4P":
+        mTables = [...tablesList, {
+          id: id,
+          ...TABLE_4P
+        }]
+        break;
+      case "6P":
+        mTables = [...tablesList, {
+          id: id,
+          ...TABLE_6P
+        }]
+        break;
+      case "7P":
+        mTables = [...tablesList, {
+          id: id,
+          ...TABLE_8P
+        }]
+        break;
+
+      default:
+        break;
+    }
+
+
+    setTablesList(mTables)
   }
 
   return (

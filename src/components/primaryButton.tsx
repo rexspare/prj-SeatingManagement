@@ -1,6 +1,7 @@
 import { ActivityIndicator, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle, } from 'react-native'
-import React, { FC } from 'react'
-import { COLORS, wp, hp, FONTS, COMMON_STYLES } from '../assets/styles/styleGuide';
+import React, { ReactNode } from 'react'
+import { COLORS, FONTS, hp, wp, COMMON_STYLES, normalize } from '../assets/styles/styleGuide';
+import { If } from '.';
 
 
 interface primaryButtonProps {
@@ -9,15 +10,25 @@ interface primaryButtonProps {
     style?: ViewStyle | [ViewStyle] | any;
     textStyle?: TextStyle | [TextStyle] | any;
     isLoading?: boolean;
+    filled?: boolean;
+    disabled?: boolean;
+    icon?: ReactNode;
 }
 
-const PrimaryButton: FC<primaryButtonProps> = (props: primaryButtonProps) => {
+const PrimaryButton: React.FC<primaryButtonProps> = (props) => {
+    const { filled = false, disabled = false, } = props
+    const styles = styles_(filled, disabled)
+
     return (
         <TouchableOpacity
-            style={[styles.main, props.style]}
+            style={[
+                styles.main,
+                props?.icon == undefined ? { width: '100%', } : { paddingHorizontal: '5%', height: hp(6.4) },
+                props.style,
+            ]}
             activeOpacity={0.8}
             onPress={() => props.onPress()}
-            disabled={props.isLoading}
+            disabled={disabled || props.isLoading}
         >
             {
                 props.isLoading ?
@@ -25,6 +36,11 @@ const PrimaryButton: FC<primaryButtonProps> = (props: primaryButtonProps) => {
                     :
                     <Text style={[styles.title, props.textStyle]}>{props.title}</Text>
             }
+            <If condition={props.icon != undefined && props.icon != true}>
+                <View style={{ marginLeft: 5 }}>
+                    {props.icon}
+                </View>
+            </If>
         </TouchableOpacity>
     )
 }
@@ -37,20 +53,24 @@ PrimaryButton.defaultProps = {
 
 export default React.memo(PrimaryButton)
 
-const styles = StyleSheet.create({
+const styles_ = (filled: any, disabled: any) => StyleSheet.create({
     main: {
-        width: wp(86.5),
-        maxWidth:550,
+
+        flexDirection: 'row',
         alignSelf: 'center',
-        marginVertical: hp(1.5),
-        backgroundColor: COLORS.PRIMARY,
+        marginVertical: hp(1),
+        backgroundColor: filled ? disabled ? COLORS.BLACK : COLORS.PRIMARY
+            : COLORS.BACKGROUND,
         ...COMMON_STYLES.center_,
-        height: 55,
-        borderRadius: 4
+        height: hp(6),
+        borderRadius: hp(0.6),
+        borderWidth: 1.5,
+        borderColor: disabled ? COLORS.BLACK : COLORS.PRIMARY
     },
     title: {
-        color: COLORS.WHITE,
-        fontSize: 15,
-        fontFamily: FONTS.POPPINS_700
+        color: filled ? COLORS.WHITE
+            : disabled ? COLORS.BLACK : COLORS.PRIMARY,
+        fontSize: 14,
+        fontFamily: FONTS.POPPINS_600
     }
 })

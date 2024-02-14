@@ -2,6 +2,8 @@ import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { FC } from 'react'
 import { boardStateSelectors, useBoard } from '../../states/board';
 import { COLORS, FONTS, hp, wp } from '../../assets/styles/styleGuide';
+import { BOOK_STATUS } from '../../assets/enums';
+import { getNumberOfOccupiedChairs } from '../../utils/myUtils';
 
 interface props {
   isVisible: boolean;
@@ -12,6 +14,7 @@ const TableDetailModal: FC<props> = (props) => {
   const { isVisible, onClose = () => { } } = props
 
   const selectedTable = useBoard(boardStateSelectors.selectedTable)
+
 
   return (
     <Modal
@@ -28,24 +31,48 @@ const TableDetailModal: FC<props> = (props) => {
       >
         <View style={styles.container}>
 
-          <Text style={styles.txt1}>Customer Detail</Text>
+          {
+            selectedTable.tableStatus == BOOK_STATUS.EMPTY ?
+              <>
+                <Text style={styles.txt1}>Customer Detail</Text>
 
-          <Text style={styles.txt2}>Name: <Text style={styles.txt3}>Customer Name</Text></Text>
-          <Text style={styles.txt2}>Client Type: <Text style={styles.txt3}>VIP</Text></Text>
-          <Text style={styles.txt2}>Number of Guests: <Text style={styles.txt3}>2</Text></Text>
-          <Text style={styles.txt2}>Special Dinner: <Text style={styles.txt3}>Birthday</Text></Text>
+                <Text style={styles.txt2}>Name: <Text style={styles.txt3}>N/A</Text></Text>
+                <Text style={styles.txt2}>Client Type: <Text style={styles.txt3}>N/A</Text></Text>
+                <Text style={styles.txt2}>Number of Guests: <Text style={styles.txt3}>N/A</Text></Text>
+                <Text style={styles.txt2}>Special Dinner: <Text style={styles.txt3}>N/A</Text></Text>
 
-          <View style={styles.line}></View>
+                <View style={styles.line}></View>
 
-          <Text style={styles.txt1}>Menu</Text>
-          <Text style={styles.txt2}>Special dishes: <Text style={styles.txt3}>None</Text></Text>
-          <Text style={styles.txt2}>Preference: <Text style={styles.txt3}>Non Vegan</Text></Text>
-          <Text style={styles.txt2}>Offert: <Text style={styles.txt3}>all</Text></Text>
-          <Text style={styles.txt2}>Offert: <Text style={styles.txt3}>all</Text></Text>
+                <Text style={styles.txt1}>Menu</Text>
+                <Text style={styles.txt2}>Special dishes: <Text style={styles.txt3}>N/A</Text></Text>
+                <Text style={styles.txt2}>Preference: <Text style={styles.txt3}>N/A</Text></Text>
+                <Text style={styles.txt2}>Offert: <Text style={styles.txt3}>N/A</Text></Text>
 
-          <View style={styles.line}></View>
+                <View style={styles.line}></View>
 
-          <Text style={styles.txt1}>Down Payment: <Text style={styles.txt3}>$100</Text></Text>
+                <Text style={styles.txt1}>Down Payment: <Text style={styles.txt3}>N/A</Text></Text>
+              </>
+              :
+              <>
+                <Text style={styles.txt1}>Customer Detail</Text>
+
+                <Text style={styles.txt2}>Name: <Text style={styles.txt3}>Customer Name</Text></Text>
+                <Text style={styles.txt2}>Client Type: <Text style={styles.txt3}>VIP</Text></Text>
+                <Text style={styles.txt2}>Number of Guests: <Text style={styles.txt3}>{getNumberOfOccupiedChairs(selectedTable)}</Text></Text>
+                <Text style={styles.txt2}>Special Dinner: <Text style={styles.txt3}>Birthday</Text></Text>
+
+                <View style={styles.line}></View>
+
+                <Text style={styles.txt1}>Menu</Text>
+                <Text style={styles.txt2}>Special dishes: <Text style={styles.txt3}>None</Text></Text>
+                <Text style={styles.txt2}>Preference: <Text style={styles.txt3}>Non Vegan</Text></Text>
+                <Text style={styles.txt2}>Offert: <Text style={styles.txt3}>all</Text></Text>
+
+                <View style={styles.line}></View>
+
+                <Text style={styles.txt1}>Down Payment: <Text style={styles.txt3}>$100</Text></Text>
+              </>
+          }
 
         </View>
 

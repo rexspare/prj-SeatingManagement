@@ -24,6 +24,7 @@ const COLORS = {
     GREY: "#d3d3d3",
     DANGER: "#bb2124",
     SUCCESS: "#00AB2C",
+    ORANGE: "#fc9208"
 }
 
 const COMMON_STYLES = StyleSheet.create({
