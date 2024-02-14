@@ -1,5 +1,6 @@
 enum SCREENS {
   SPLASH = "#SPLASH",
+  LOGIN = "#LOGIN",
   TABLE_VIEW = "#TABLE_VIEW"
 }
 

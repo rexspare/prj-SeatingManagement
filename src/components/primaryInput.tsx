@@ -32,11 +32,11 @@ const PrimaryInput: FC<primaryInputPros> = (props: primaryInputPros) => {
 
     return (
         <View style={[styles.main, props.containerStyles]}>
-            <If condition={props.hideTitle != true}>
+            {/* <If condition={props.hideTitle != true}>
                 <View style={styles.titleContainer}>
                     <Text style={[styles.title, props.titleStyles]}>{props.title}</Text>
                 </View>
-            </If>
+            </If> */}
             {/* TEXT INPUT */}
             <View style={[styles.container, props.inputContainer,
             { borderColor: props?.isError ? COLORS.DANGER : isFocused ? COLORS.PRIMARY : COLORS.GREY }]}>
@@ -95,11 +95,12 @@ export default React.memo(PrimaryInput)
 
 const styles = StyleSheet.create({
     main: {
-        width: wp(86.5),
-        maxWidth :550,
+        width: '90%',
+        maxWidth: 550,
         alignSelf: 'center',
-        marginVertical: 11,
+        marginVertical: 15,
         backgroundColor: COLORS.BACKGROUND,
+
     },
     title: {
         color: COLORS.BLACK,
@@ -112,10 +113,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 4,
         borderColor: COLORS.GREY,
+        backgroundColor: COLORS.BACKGROUND,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
     },
     input: {
         flex: 1,
-        height: 45,
+        height: 55,
         paddingHorizontal: 10,
         fontSize: 14,
         fontFamily: FONTS.POPPINS_600,

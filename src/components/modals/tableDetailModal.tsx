@@ -40,6 +40,7 @@ const TableDetailModal: FC<props> = (props) => {
                 <Text style={styles.txt2}>Client Type: <Text style={styles.txt3}>N/A</Text></Text>
                 <Text style={styles.txt2}>Number of Guests: <Text style={styles.txt3}>N/A</Text></Text>
                 <Text style={styles.txt2}>Special Dinner: <Text style={styles.txt3}>N/A</Text></Text>
+                <Text style={styles.txt2}>Reservation Time: <Text style={styles.txt3}>N/A</Text></Text>
 
                 <View style={styles.line}></View>
 
@@ -60,6 +61,7 @@ const TableDetailModal: FC<props> = (props) => {
                 <Text style={styles.txt2}>Client Type: <Text style={styles.txt3}>VIP</Text></Text>
                 <Text style={styles.txt2}>Number of Guests: <Text style={styles.txt3}>{getNumberOfOccupiedChairs(selectedTable)}</Text></Text>
                 <Text style={styles.txt2}>Special Dinner: <Text style={styles.txt3}>Birthday</Text></Text>
+                <Text style={styles.txt2}>Reservation Time: <Text style={styles.txt3}>10:00pm - 11:00pm</Text></Text>
 
                 <View style={styles.line}></View>
 

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { FC } from 'react'
-import { COLORS, hp } from '../../assets/styles/styleGuide'
+import { COLORS, FONTS, hp } from '../../assets/styles/styleGuide'
 import { getAssetColor, getChairColor } from '../../utils/myUtils';
 
 interface props {
@@ -51,6 +51,7 @@ const FourPerson: FC<props> = (props) => {
                     onPress={() => onPressTable()}
                     disabled={disabled}
                 >
+                    <Text style={styles.txt}>{data.id}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -90,7 +91,9 @@ const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
         height: size,
         borderRadius: size,
         backgroundColor: disabled ? COLORS.BLACK : getAssetColor(data.tableStatus),
-        margin: size * 0.1
+        margin: size * 0.1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     row: {
         flexDirection: 'row'
@@ -106,5 +109,10 @@ const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
         height: size * 0.6,
         backgroundColor: disabled ? COLORS.BLACK : COLORS.SUCCESS,
         alignSelf: 'center'
+    },
+    txt: {
+        fontFamily: FONTS.POPPINS_500,
+        color: COLORS.WHITE,
+        fontSize: 16
     }
 })
