@@ -55,7 +55,10 @@ const ThreePerson: FC<props> = (props) => {
                     onPress={() => onPressTable()}
                     disabled={disabled}
                 >
-                    <Text style={styles.txt}>{data.id}</Text>
+                    <Text
+                        adjustsFontSizeToFit={true}
+                        numberOfLines={1}
+                        style={styles.txt}>{data.id}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity

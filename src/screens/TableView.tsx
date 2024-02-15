@@ -4,6 +4,7 @@ import Draggable from 'react-native-draggable';
 import { COLORS, hp, wp } from '../assets/styles/styleGuide';
 import { AddTableMenu, ChairStatusModal, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwoPerson } from '../components';
 import { boardStateSelectors, useBoard } from '../states/board';
+import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
 
 const TableView: FC = () => {
@@ -68,8 +69,17 @@ const TableView: FC = () => {
 
     return (
         <View style={styles.main}>
-
-            <View style={styles.canvas}>
+            <ReactNativeZoomableView
+                maxZoom={2.5}
+                minZoom={1}
+                zoomStep={0.5}
+                initialZoom={1}
+                bindToBorders={true}
+                disablePanOnInitialZoom={true}
+                style={[styles.canvas, { borderColor: "#FF0000" }]}
+                contentWidth={wp(85)}
+                contentHeight={hp(100)}
+            >
 
                 {
                     tablesList.map((table: any, index: number) => {
@@ -92,8 +102,7 @@ const TableView: FC = () => {
                     })
                 }
 
-            </View>
-
+            </ReactNativeZoomableView>
             <AddTableMenu />
 
             <TableDetailModal
@@ -118,6 +127,16 @@ const styles = StyleSheet.create({
     },
     canvas: {
         flex: 1,
+        shadowColor: "#000",
+        backgroundColor: COLORS.BACKGROUND,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
     }
 })
 
