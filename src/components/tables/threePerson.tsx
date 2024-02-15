@@ -13,7 +13,7 @@ interface props {
 
 const ThreePerson: FC<props> = (props) => {
     const {
-        size = hp(5),
+        size = hp(6),
         disabled = false,
         onPressTable = () => { },
         data = {},

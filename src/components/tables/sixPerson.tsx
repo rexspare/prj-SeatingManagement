@@ -13,7 +13,7 @@ interface props {
 
 const SixPerson: FC<props> = (props) => {
     const {
-        size = hp(8),
+        size = hp(10),
         disabled = false,
         onPressTable = () => { },
         data = {},

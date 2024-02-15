@@ -15,7 +15,7 @@ interface props {
 
 const EightPerson: FC<props> = (props) => {
     const {
-        size = hp(10),
+        size = hp(12),
         disabled = false,
         onPressTable = () => { },
         data = {},
