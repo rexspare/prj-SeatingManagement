@@ -11,6 +11,7 @@ interface props {
     data?: any;
     onPressChair?: Function;
     defaultSize?: any;
+    isRound?: boolean;
 }
 
 const TwoPerson: FC<props> = (props) => {
@@ -20,7 +21,9 @@ const TwoPerson: FC<props> = (props) => {
         onPressTable = () => { },
         data = {},
         onPressChair = () => { },
-        defaultSize
+        defaultSize,
+        isRound = false
+
     } = props
 
     const tableSize = useBoard(boardStateSelectors.tableSize)
@@ -34,7 +37,7 @@ const TwoPerson: FC<props> = (props) => {
     }
 
 
-    const styles = styles_(getSize(), disabled, data)
+    const styles = styles_(getSize(), disabled, data, isRound)
 
 
     return (
@@ -56,10 +59,10 @@ const TwoPerson: FC<props> = (props) => {
                 onPress={() => onPressTable()}
                 disabled={disabled}
             >
-                <Text 
-                adjustsFontSizeToFit={true}
-                numberOfLines={1}
-                style={styles.txt}>{data.id}</Text>
+                <Text
+                    adjustsFontSizeToFit={true}
+                    numberOfLines={1}
+                    style={styles.txt}>{data.id}</Text>
             </TouchableOpacity>
 
 
@@ -79,7 +82,7 @@ const TwoPerson: FC<props> = (props) => {
 
 export default TwoPerson
 
-const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
+const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => StyleSheet.create({
     main: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -87,7 +90,7 @@ const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
     table: {
         width: size,
         height: size,
-        borderRadius: size,
+        borderRadius: isRound ? size : 0,
         backgroundColor: disabled ? COLORS.BLACK : getAssetColor(data?.tableStatus),
         margin: size * 0.1,
         justifyContent: 'center',

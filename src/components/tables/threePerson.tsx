@@ -11,6 +11,7 @@ interface props {
     data?: any;
     onPressChair?: Function;
     defaultSize?: any;
+    isRound?: boolean;
 }
 
 const ThreePerson: FC<props> = (props) => {
@@ -20,7 +21,9 @@ const ThreePerson: FC<props> = (props) => {
         onPressTable = () => { },
         data = {},
         onPressChair = () => { },
-        defaultSize
+        defaultSize,
+        isRound = false
+
     } = props
 
     const tableSize = useBoard(boardStateSelectors.tableSize)
@@ -33,7 +36,7 @@ const ThreePerson: FC<props> = (props) => {
         }
     }
 
-    const styles = styles_(getSize(), disabled, data)
+    const styles = styles_(getSize(), disabled, data, isRound)
 
     return (
         <View style={styles.main}>
@@ -88,7 +91,7 @@ const ThreePerson: FC<props> = (props) => {
 
 export default ThreePerson
 
-const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
+const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => StyleSheet.create({
     main: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -96,7 +99,7 @@ const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
     table: {
         width: size,
         height: size,
-        borderRadius: size,
+        borderRadius: isRound ? size : 0,
         backgroundColor: disabled ? COLORS.BLACK : getAssetColor(data?.tableStatus),
         margin: size * 0.1,
         justifyContent: 'center',

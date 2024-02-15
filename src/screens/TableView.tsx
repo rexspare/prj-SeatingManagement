@@ -20,36 +20,42 @@ const TableView: FC = () => {
             case "2P":
                 return <TwoPerson
                     data={table}
+                    isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "3P":
                 return <ThreePerson
                     data={table}
+                    isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "4P":
                 return <FourPerson
                     data={table}
+                    isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "6P":
                 return <SixPerson
                     data={table}
+                    isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             case "8P":
                 return <EightPerson
                     data={table}
+                    isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
             default:
                 return <TwoPerson
                     data={table}
+                    isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />

@@ -35,7 +35,7 @@ const SettingScreen: FC = () => {
                 <Slider
                     style={styles.slider}
                     value={tableSize}
-                    minimumValue={0}
+                    minimumValue={-3}
                     maximumValue={5}
                     minimumTrackTintColor={COLORS.BLACK}
                     maximumTrackTintColor={"#ababab"}

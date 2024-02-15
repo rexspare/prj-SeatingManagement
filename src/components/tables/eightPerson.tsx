@@ -12,6 +12,7 @@ interface props {
     data?: any;
     onPressChair?: Function;
     defaultSize?: any;
+    isRound?: boolean;
 }
 
 
@@ -22,7 +23,8 @@ const EightPerson: FC<props> = (props) => {
         onPressTable = () => { },
         data = {},
         onPressChair = () => { },
-        defaultSize
+        defaultSize,
+        isRound = false,
     } = props
 
     const tableSize = useBoard(boardStateSelectors.tableSize)
@@ -35,7 +37,7 @@ const EightPerson: FC<props> = (props) => {
         }
     }
 
-    const styles = styles_(getSize(), disabled, data)
+    const styles = styles_(getSize(), disabled, data, isRound)
     const rotation = Gesture.Rotation();
 
     return (
@@ -46,9 +48,11 @@ const EightPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 0),
+                        transform: [{ rotate: isRound ? '145deg' : '0deg' }],
+                        marginBottom: isRound ? -(getSize() * 0.15) : 0
                     }]}
                     onPress={() => onPressChair(0)}
-                    hitSlop={{ top: 10, bottom: 0, left: 5, right: 5 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
@@ -58,7 +62,7 @@ const EightPerson: FC<props> = (props) => {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 1),
                     }]}
                     onPress={() => onPressChair(1)}
-                    hitSlop={{ top: 10, bottom: 0, left: 5, right: 5 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
@@ -66,9 +70,11 @@ const EightPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 2),
+                        transform: [{ rotate: isRound ? '35deg' : '0deg' }],
+                        marginBottom: isRound ? -(getSize() * 0.15) : 0
                     }]}
                     onPress={() => onPressChair(2)}
-                    hitSlop={{ top: 10, bottom: 0, left: 5, right: 5 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
@@ -81,13 +87,13 @@ const EightPerson: FC<props> = (props) => {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 3),
                     }]}
                     onPress={() => onPressChair(3)}
-                    hitSlop={{ top: 0, bottom: 0, left: 10, right: 0 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styles.table}
+                    style={[styles.table]}
                     onPress={() => onPressTable()}
                     disabled={disabled}
                 >
@@ -102,7 +108,7 @@ const EightPerson: FC<props> = (props) => {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 4),
                     }]}
                     onPress={() => onPressChair(4)}
-                    hitSlop={{ top: 0, bottom: 0, left: 0, right: 10 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
@@ -112,9 +118,11 @@ const EightPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 5),
+                        transform: [{ rotate: isRound ? '30deg' : '0deg' }],
+                        marginTop: isRound ? -(getSize() * 0.15) : 0
                     }]}
                     onPress={() => onPressChair(5)}
-                    hitSlop={{ top: 0, bottom: 10, left: 5, right: 5 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
@@ -124,7 +132,7 @@ const EightPerson: FC<props> = (props) => {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 6),
                     }]}
                     onPress={() => onPressChair(6)}
-                    hitSlop={{ top: 0, bottom: 10, left: 5, right: 5 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
@@ -132,9 +140,11 @@ const EightPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 7),
+                        transform: [{ rotate: isRound ? '150deg' : '0deg' }],
+                        marginTop: isRound ? -(getSize() * 0.15) : 0
                     }]}
                     onPress={() => onPressChair(7)}
-                    hitSlop={{ top: 0, bottom: 10, left: 5, right: 5 }}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
                 </TouchableOpacity>
@@ -148,14 +158,15 @@ const EightPerson: FC<props> = (props) => {
 
 export default EightPerson
 
-const styles_ = (size: any, disabled: boolean, data: any) => StyleSheet.create({
+const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => StyleSheet.create({
     main: {
         justifyContent: 'center',
         alignItems: 'center',
     },
     table: {
         width: size,
-        height: size / 2.5,
+        height: isRound ? size : size / 2.5,
+        borderRadius: isRound ? size : 0,
         backgroundColor: disabled ? COLORS.BLACK : getAssetColor(data.tableStatus),
         margin: (size * 0.1) > 5 ? 5 : size * 0.1,
         justifyContent: 'center',

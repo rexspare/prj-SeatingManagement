@@ -18,19 +18,19 @@ const AddTableMenu = () => {
     {
       id: 1,
       title: "2 Person",
-      icon: <TwoPerson defaultSize={hp(4)} disabled={true} />,
+      icon: <TwoPerson defaultSize={hp(4)} disabled={true} isRound={true} />,
       type: "2P"
     },
     {
       id: 2,
       title: "3 Person",
-      icon: <ThreePerson defaultSize={hp(4)} disabled={true} />,
+      icon: <ThreePerson defaultSize={hp(4)} disabled={true} isRound={true} />,
       type: "3P"
     },
     {
       id: 3,
       title: "4 Person",
-      icon: <FourPerson defaultSize={hp(4)} disabled={true} />,
+      icon: <FourPerson defaultSize={hp(4)} disabled={true} isRound={true} />,
       type: "4P"
     },
     {
@@ -114,7 +114,10 @@ const AddTableMenu = () => {
           >
             {item.icon}
 
-            <Text style={styles.itemTxt}>{item.title}</Text>
+            <Text
+              adjustsFontSizeToFit={true}
+              numberOfLines={1}
+              style={styles.itemTxt}>{item.title}</Text>
 
           </TouchableOpacity>
         ))

@@ -5,6 +5,7 @@ const TABLES = [
     {
         id: 1,
         type: "2P",
+        isRound: false,
         xAxis: wp(5),
         yAxis: hp(5),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -23,6 +24,7 @@ const TABLES = [
     {
         id: 2,
         type: "3P",
+        isRound: true,
         xAxis: wp(5),
         yAxis: hp(20),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -45,6 +47,7 @@ const TABLES = [
     {
         id: 3,
         type: "3P",
+        isRound: false,
         xAxis: wp(15),
         yAxis: hp(15),
         tableStatus: BOOK_STATUS.BOOKED,
@@ -66,6 +69,7 @@ const TABLES = [
     {
         id: 4,
         type: "8P",
+        isRound: false,
         xAxis: wp(45),
         yAxis: hp(20),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -105,10 +109,53 @@ const TABLES = [
 
         ]
     },
+    {
+        id: 44,
+        type: "8P",
+        isRound: true,
+        xAxis: wp(45),
+        yAxis: hp(60),
+        tableStatus: BOOK_STATUS.OCCUPIED,
+        chairs: [
+            {
+                id: 1,
+                chairStatus: BOOK_STATUS.OCCUPIED
+            },
+            {
+                id: 2,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+            {
+                id: 3,
+                chairStatus: BOOK_STATUS.OCCUPIED
+            },
+            {
+                id: 4,
+                chairStatus: BOOK_STATUS.OCCUPIED
+            },
+            {
+                id: 5,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+            {
+                id: 6,
+                chairStatus: BOOK_STATUS.OCCUPIED
+            },
+            {
+                id: 7,
+                chairStatus: BOOK_STATUS.OCCUPIED
+            },
+            {
+                id: 8,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
 
+        ]
+    },
     {
         id: 5,
         type: "6P",
+        isRound: false,
         xAxis: wp(45),
         yAxis: hp(40),
         tableStatus: BOOK_STATUS.EMPTY,
@@ -139,10 +186,44 @@ const TABLES = [
             },
         ]
     },
-
+    {
+        id: 51,
+        type: "6P",
+        isRound: true,
+        xAxis: wp(65),
+        yAxis: hp(40),
+        tableStatus: BOOK_STATUS.EMPTY,
+        chairs: [
+            {
+                id: 1,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+            {
+                id: 2,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+            {
+                id: 3,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+            {
+                id: 4,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+            {
+                id: 5,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+            {
+                id: 6,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+        ]
+    },
     {
         id: 6,
         type: "4P",
+        isRound: false,
         xAxis: wp(30),
         yAxis: hp(60),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -169,6 +250,7 @@ const TABLES = [
     {
         id: 7,
         type: "4P",
+        isRound: true,
         xAxis: wp(25),
         yAxis: hp(50),
         tableStatus: BOOK_STATUS.OCCUPIED,
