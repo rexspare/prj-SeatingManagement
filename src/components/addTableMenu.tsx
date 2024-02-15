@@ -5,8 +5,12 @@ import { COLORS, FONTS, hp, normalize } from '../assets/styles/styleGuide'
 import { boardStateSelectors, useBoard } from '../states/board'
 import { generateRandomId } from '../utils/myUtils'
 import { TABLE_2P, TABLE_3P, TABLE_4P, TABLE_6P, TABLE_8P } from '../data'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import { useNavigation } from '@react-navigation/native'
+import { SCREENS } from '../assets/enums'
 
 const AddTableMenu = () => {
+  const navigation = useNavigation()
   const tablesList = useBoard(boardStateSelectors.tablesList)
   const setTablesList = useBoard(boardStateSelectors.setTablesList)
 
@@ -14,31 +18,31 @@ const AddTableMenu = () => {
     {
       id: 1,
       title: "2 Person",
-      icon: <TwoPerson size={hp(4)} disabled={true} />,
+      icon: <TwoPerson defaultSize={hp(4)} disabled={true} />,
       type: "2P"
     },
     {
       id: 2,
       title: "3 Person",
-      icon: <ThreePerson size={hp(4)} disabled={true} />,
+      icon: <ThreePerson defaultSize={hp(4)} disabled={true} />,
       type: "3P"
     },
     {
       id: 3,
       title: "4 Person",
-      icon: <FourPerson size={hp(4)} disabled={true} />,
+      icon: <FourPerson defaultSize={hp(4)} disabled={true} />,
       type: "4P"
     },
     {
       id: 4,
       title: "6 Person",
-      icon: <SixPerson size={hp(4)} disabled={true} />,
+      icon: <SixPerson defaultSize={hp(4)} disabled={true} />,
       type: "6P"
     },
     {
       id: 5,
       title: "8 Person",
-      icon: <EightPerson size={hp(6)} disabled={true} />,
+      icon: <EightPerson defaultSize={hp(6)} disabled={true} />,
       type: "8P"
     },
   ]
@@ -83,13 +87,23 @@ const AddTableMenu = () => {
         break;
     }
 
-
     setTablesList(mTables)
   }
 
   return (
     <View style={styles.main}>
+
+      <TouchableOpacity
+        style={styles.setting}
+        onPress={() => navigation.navigate(SCREENS.SETTING)}
+      >
+        <AntDesign name={"setting"} color={COLORS.BLACK} size={hp(2)} />
+        <Text style={styles.settingTxt}>Setting</Text>
+
+      </TouchableOpacity>
+
       <Text style={styles.table}>Add Tables</Text>
+
 
       {
         menuList.map((item, index) => (
@@ -113,12 +127,14 @@ export default AddTableMenu
 
 const styles = StyleSheet.create({
   main: {
-    width: hp(15)
+    width: hp(15),
+    borderLeftWidth: 1,
+    borderColor: COLORS.GREY
   },
   item: {
     paddingVertical: hp(1.6),
     elevation: 4,
-    backgroundColor: COLORS.WHITE
+    backgroundColor: COLORS.WHITE,
   },
   itemTxt: {
     textAlign: 'center',
@@ -133,5 +149,21 @@ const styles = StyleSheet.create({
     marginVertical: hp(2),
     color: COLORS.BLACK,
     fontFamily: FONTS.POPPINS_600,
-  }
+  },
+  setting: {
+    paddingVertical: hp(1.6),
+    elevation: 4,
+    backgroundColor: COLORS.WHITE,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  settingTxt: {
+    textAlign: 'center',
+    fontSize: normalize(4),
+    color: COLORS.BLACK,
+    marginLeft: 5,
+    fontFamily: FONTS.POPPINS_500,
+    marginTop: 4
+  },
 })

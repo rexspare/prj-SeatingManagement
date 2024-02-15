@@ -57,19 +57,13 @@ const AppHeader = (props: appHeaderProps) => {
                         activeOpacity={0.8}
                         onPress={() => handleGoBack()}
                     >
-                        <Feather name='arrow-left' color={COLORS.WHITE} size={24} />
+                        <Feather name='arrow-left' color={COLORS.BLACK} size={24} />
                     </TouchableOpacity>
                 }
                 <View style={styles.titleContainer}>
-                    {
-                        title ?
-                            <Text style={[styles.title, { fontSize: 18 }]}>{title}</Text>
-                            :
-                            <>
-                                <Text style={styles.greeting}>{getGreetings()}</Text>
-                                <Text style={styles.title}>{user?.api_user}</Text>
-                            </>
-                    }
+
+                    <Text style={[styles.title, { fontSize: 18 }]}>{title}</Text>
+
                 </View>
 
             </View>
@@ -96,14 +90,16 @@ const styles = StyleSheet.create({
         width: '100%',
         // borderBottomWidth: 0.8,
         borderColor: COLORS.GREY,
-        paddingHorizontal: '4%',
+        paddingHorizontal: 15,
         paddingVertical: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: COLORS.PRIMARY,
+        backgroundColor: COLORS.BACKGROUND,
         paddingTop: Platform.OS == 'ios' ? 60 : 10,
-        minHeight: 60
+        minHeight: 65,
+        borderWidth: 1,
+
     },
     profileContainer: {
         flexDirection: 'row',
@@ -121,7 +117,7 @@ const styles = StyleSheet.create({
         fontSize: 12
     },
     title: {
-        color: COLORS.WHITE,
+        color: COLORS.BLACK,
         fontFamily: FONTS.POPPINS_700,
         fontSize: 14,
         marginTop: 4

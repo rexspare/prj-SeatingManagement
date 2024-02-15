@@ -1,11 +1,11 @@
 import Splash from "./splash";
 import TableView from "./TableView";
-import LoginScreen from "./loginScreen";
-import MenuScreen from "./menuScreen";
+import LoginScreen from "./login";
+import SettingScreen from "./setting";
 
 export {
     Splash,
     TableView,
     LoginScreen,
-    MenuScreen
+    SettingScreen
 }

@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { FC } from 'react'
 import { COLORS, FONTS, hp } from '../../assets/styles/styleGuide'
 import { getAssetColor, getChairColor } from '../../utils/myUtils';
+import { boardStateSelectors, useBoard } from '../../states/board';
 
 interface props {
     size?: number;
@@ -9,18 +10,30 @@ interface props {
     onPressTable?: Function;
     data?: any;
     onPressChair?: Function;
+    defaultSize?: any;
 }
 
 const ThreePerson: FC<props> = (props) => {
     const {
-        size = hp(6),
+        size = 5,
         disabled = false,
         onPressTable = () => { },
         data = {},
         onPressChair = () => { },
+        defaultSize
     } = props
 
-    const styles = styles_(size, disabled, data)
+    const tableSize = useBoard(boardStateSelectors.tableSize)
+
+    const getSize = () => {
+        if (defaultSize) {
+            return defaultSize
+        } else {
+            return hp(size + tableSize)
+        }
+    }
+
+    const styles = styles_(getSize(), disabled, data)
 
     return (
         <View style={styles.main}>

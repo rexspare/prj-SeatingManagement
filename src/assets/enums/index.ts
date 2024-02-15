@@ -1,6 +1,7 @@
 enum SCREENS {
   SPLASH = "#SPLASH",
   LOGIN = "#LOGIN",
+  SETTING = "#SETTING",
   MENU = "#MENU",
   TABLE_VIEW = "#TABLE_VIEW"
 }
@@ -10,6 +11,7 @@ enum ASYNC_KEYS {
   USER_ID = "@USER_ID",
   USER_NAME = "@USER_NAME",
   USER_DATA = "@USER_DATA",
+  TABLE_SIZE = "@TABLE_SIZE",
 }
 
 enum ALERT_TYPES {

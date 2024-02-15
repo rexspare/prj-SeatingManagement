@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { COLORS, FONTS, hp } from '../../assets/styles/styleGuide'
 import { GestureDetector, Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { getAssetColor, getChairColor } from '../../utils/myUtils';
+import { boardStateSelectors, useBoard } from '../../states/board';
 
 interface props {
     size?: number;
@@ -10,19 +11,31 @@ interface props {
     onPressTable?: Function;
     data?: any;
     onPressChair?: Function;
+    defaultSize?: any;
 }
 
 
 const EightPerson: FC<props> = (props) => {
     const {
-        size = hp(12),
+        size = 10,
         disabled = false,
         onPressTable = () => { },
         data = {},
         onPressChair = () => { },
+        defaultSize
     } = props
 
-    const styles = styles_(size, disabled, data)
+    const tableSize = useBoard(boardStateSelectors.tableSize)
+
+    const getSize = () => {
+        if (defaultSize) {
+            return defaultSize
+        } else {
+            return hp(size + (tableSize * 2))
+        }
+    }
+
+    const styles = styles_(getSize(), disabled, data)
     const rotation = Gesture.Rotation();
 
     return (

@@ -17,6 +17,9 @@ export interface IBoardState {
 
   selectedChair: any;
   setSelectedChair: Function;
+
+  tableSize: number;
+  settableSize: Function;
 }
 
 const initialState: IBoardState = {
@@ -27,6 +30,8 @@ const initialState: IBoardState = {
   setSelectedTable: () => { },
   selectedChair: undefined,
   setSelectedChair: () => { },
+  tableSize: 0,
+  settableSize: () => { },
 };
 
 /**
@@ -37,6 +42,7 @@ export const useBoard = create<IBoardState>((set, get) => ({
   setTablesList: (item: any) => set({ tablesList: item }),
   setSelectedTable: (item: any) => set({ selectedTable: item }),
   setSelectedChair: (item: any) => set({ selectedChair: item }),
+  settableSize: (item: any) => set({ tableSize: item }),
 }));
 
 /**
