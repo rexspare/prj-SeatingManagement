@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native
 import React, { FC } from 'react'
 import { COLORS, FONTS, hp } from '../../assets/styles/styleGuide'
 import { GestureDetector, Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
-import { getAssetColor, getChairColor } from '../../utils/myUtils';
+import { getAssetColor, getChairColor, getTableTxtStyle } from '../../utils/myUtils';
 import { boardStateSelectors, useBoard } from '../../states/board';
 import { BOOK_STATUS } from '../../assets/enums';
 
@@ -102,14 +102,14 @@ const EightPerson: FC<props> = (props) => {
                         <Text
                             adjustsFontSizeToFit={true}
                             numberOfLines={1}
-                            style={styles.txt}>T{data.id}</Text>
+                            style={[styles.txt, getTableTxtStyle(tableSize)]}>{data.id}</Text>
                     }
 
                     {(data.tableStatus != BOOK_STATUS.EMPTY && !disabled) &&
                         <Text
                             adjustsFontSizeToFit={true}
                             numberOfLines={1}
-                            style={styles.txt}>08:00 pm</Text>
+                            style={[styles.txt, getTableTxtStyle(tableSize)]}>08:00</Text>
                     }
 
                 </TouchableOpacity>
@@ -206,6 +206,6 @@ const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => S
     txt: {
         fontFamily: FONTS.POPPINS_500,
         color: COLORS.WHITE,
-        fontSize: 16
+
     }
 })

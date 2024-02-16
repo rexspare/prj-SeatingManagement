@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { FC } from 'react'
 import { COLORS, FONTS, hp } from '../../assets/styles/styleGuide'
-import { getAssetColor, getChairColor } from '../../utils/myUtils';
+import { getAssetColor, getChairColor, getTableTxtStyle } from '../../utils/myUtils';
 import { boardStateSelectors, useBoard } from '../../states/board';
 import { BOOK_STATUS } from '../../assets/enums';
 
@@ -65,16 +65,14 @@ const TwoPerson: FC<props> = (props) => {
                     <Text
                         adjustsFontSizeToFit={true}
                         numberOfLines={1}
-                        style={styles.txt}>T{data.id}</Text>
+                        style={[styles.txt, getTableTxtStyle(tableSize)]}>{data.id}</Text>
                 }
 
                 {(data.tableStatus != BOOK_STATUS.EMPTY && !disabled) &&
                     <Text
                         adjustsFontSizeToFit={true}
                         numberOfLines={1}
-                        style={[styles.txt, {
-                            paddingHorizontal: '10%'
-                        }]}>08:00 pm</Text>
+                        style={[styles.txt, getTableTxtStyle(tableSize)]}>08:00</Text>
                 }
 
             </TouchableOpacity>

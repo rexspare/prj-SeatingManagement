@@ -110,6 +110,20 @@ const generateRandomId = (length: number = 32) => {
     return randomId;
 }
 
+const getTableTxtStyle = (size: number) => {
+    if (size > 0) {
+        return {
+            fontSize: 15 + (size * 2),
+            lineHeight: 15 + (size * 2) + 3
+        }
+    } else {
+        return {
+            fontSize: 15 + (size * 2),
+            lineHeight: 15 + (size * 2) + 1
+        }
+    }
+
+}
 
 
 export {
@@ -119,6 +133,7 @@ export {
     getChairColor,
     getNumberOfOccupiedChairs,
     getChairStatus,
-    generateRandomId
+    generateRandomId,
+    getTableTxtStyle
 };
 
