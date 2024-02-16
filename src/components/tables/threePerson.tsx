@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { COLORS, FONTS, hp } from '../../assets/styles/styleGuide'
 import { getAssetColor, getChairColor } from '../../utils/myUtils';
 import { boardStateSelectors, useBoard } from '../../states/board';
+import { BOOK_STATUS } from '../../assets/enums';
 
 interface props {
     size?: number;
@@ -16,7 +17,7 @@ interface props {
 
 const ThreePerson: FC<props> = (props) => {
     const {
-        size = 5,
+        size = 7,
         disabled = false,
         onPressTable = () => { },
         data = {},
@@ -58,10 +59,22 @@ const ThreePerson: FC<props> = (props) => {
                     onPress={() => onPressTable()}
                     disabled={disabled}
                 >
-                    <Text
-                        adjustsFontSizeToFit={true}
-                        numberOfLines={1}
-                        style={styles.txt}>{data.id}</Text>
+                    {(!disabled) &&
+                        <Text
+                            adjustsFontSizeToFit={true}
+                            numberOfLines={1}
+                            style={styles.txt}>T{data.id}</Text>
+                    }
+
+                    {(data.tableStatus != BOOK_STATUS.EMPTY && !disabled) &&
+                        <Text
+                            adjustsFontSizeToFit={true}
+                            numberOfLines={1}
+                            style={[styles.txt, {
+                                paddingHorizontal: '10%'
+                            }]}>08:00 pm</Text>
+                    }
+
                 </TouchableOpacity>
 
                 <TouchableOpacity

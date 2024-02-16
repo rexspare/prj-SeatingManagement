@@ -20,6 +20,9 @@ export interface IBoardState {
 
   tableSize: number;
   settableSize: Function;
+
+  selectedZone: number;
+  setselectedZone: Function;
 }
 
 const initialState: IBoardState = {
@@ -32,6 +35,8 @@ const initialState: IBoardState = {
   setSelectedChair: () => { },
   tableSize: 0,
   settableSize: () => { },
+  selectedZone: 0,
+  setselectedZone: () => { },
 };
 
 /**
@@ -39,10 +44,11 @@ const initialState: IBoardState = {
  */
 export const useBoard = create<IBoardState>((set, get) => ({
   ...initialState,
-  setTablesList: (item: any) => set({ tablesList: item }),
-  setSelectedTable: (item: any) => set({ selectedTable: item }),
-  setSelectedChair: (item: any) => set({ selectedChair: item }),
-  settableSize: (item: any) => set({ tableSize: item }),
+  setTablesList: (value: any) => set({ tablesList: value }),
+  setSelectedTable: (value: any) => set({ selectedTable: value }),
+  setSelectedChair: (value: any) => set({ selectedChair: value }),
+  settableSize: (value: any) => set({ tableSize: value }),
+  setselectedZone: (value: any) => set({ selectedZone: value }),
 }));
 
 /**

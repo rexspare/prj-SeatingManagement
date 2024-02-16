@@ -6,6 +6,7 @@ const TABLES = [
         id: 1,
         type: "2P",
         isRound: false,
+        zone:1,
         xAxis: wp(5),
         yAxis: hp(5),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -25,8 +26,9 @@ const TABLES = [
         id: 2,
         type: "3P",
         isRound: true,
+        zone:1,
         xAxis: wp(5),
-        yAxis: hp(20),
+        yAxis: hp(35),
         tableStatus: BOOK_STATUS.OCCUPIED,
         chairs: [
             {
@@ -48,6 +50,7 @@ const TABLES = [
         id: 3,
         type: "3P",
         isRound: false,
+        zone:1,
         xAxis: wp(15),
         yAxis: hp(15),
         tableStatus: BOOK_STATUS.BOOKED,
@@ -70,6 +73,7 @@ const TABLES = [
         id: 4,
         type: "8P",
         isRound: false,
+        zone:2,
         xAxis: wp(45),
         yAxis: hp(20),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -113,6 +117,7 @@ const TABLES = [
         id: 44,
         type: "8P",
         isRound: true,
+        zone:2,
         xAxis: wp(45),
         yAxis: hp(60),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -156,6 +161,7 @@ const TABLES = [
         id: 5,
         type: "6P",
         isRound: false,
+        zone:2,
         xAxis: wp(45),
         yAxis: hp(40),
         tableStatus: BOOK_STATUS.EMPTY,
@@ -189,6 +195,7 @@ const TABLES = [
     {
         id: 51,
         type: "6P",
+        zone:2,
         isRound: true,
         xAxis: wp(65),
         yAxis: hp(40),
@@ -224,8 +231,9 @@ const TABLES = [
         id: 6,
         type: "4P",
         isRound: false,
+        zone:1,
         xAxis: wp(30),
-        yAxis: hp(60),
+        yAxis: hp(65),
         tableStatus: BOOK_STATUS.OCCUPIED,
         chairs: [
             {
@@ -251,6 +259,7 @@ const TABLES = [
         id: 7,
         type: "4P",
         isRound: true,
+        zone:1,
         xAxis: wp(25),
         yAxis: hp(50),
         tableStatus: BOOK_STATUS.OCCUPIED,
@@ -275,6 +284,20 @@ const TABLES = [
     },
 ]
 
+const ZONE_LIST = [
+    {
+        id: 0,
+        title: "All"
+    },
+    {
+        id: 1,
+        title: "Zone 1"
+    },
+    {
+        id: 2,
+        title: "Zone 2"
+    },
+]
 
 const TABLE_2P = {
     type: "2P",
@@ -416,6 +439,7 @@ const TABLE_8P = {
 
 export {
     TABLES,
+    ZONE_LIST,
     TABLE_2P,
     TABLE_3P,
     TABLE_4P,

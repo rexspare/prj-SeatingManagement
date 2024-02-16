@@ -2,18 +2,28 @@ import React, { FC, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Draggable from 'react-native-draggable';
 import { COLORS, hp, wp } from '../assets/styles/styleGuide';
-import { AddTableMenu, ChairStatusModal, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwoPerson } from '../components';
+import { AddTableMenu, ChairStatusModal, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwoPerson, ZoneSelector } from '../components';
 import { boardStateSelectors, useBoard } from '../states/board';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
 
 const TableView: FC = () => {
     const tablesList = useBoard(boardStateSelectors.tablesList)
+    const selectedZone = useBoard(boardStateSelectors.selectedZone)
     const setSelectedTable = useBoard(boardStateSelectors.setSelectedTable)
     const setSelectedChair = useBoard(boardStateSelectors.setSelectedChair)
 
     const [isModalVisible, setisModalVisible] = useState(false)
     const [isChairModalVisible, setisChairModalVisible] = useState(false)
+
+    const getFilteredData = () => {
+        if (selectedZone == 0) {
+            return tablesList
+        } else {
+            const filtered = tablesList.filter((tb) => tb.zone == selectedZone)
+            return filtered
+        }
+    }
 
     const getTable = (table: any) => {
         switch (table.type) {
@@ -75,40 +85,48 @@ const TableView: FC = () => {
 
     return (
         <View style={styles.main}>
-            <ReactNativeZoomableView
-                maxZoom={2.5}
-                minZoom={1}
-                zoomStep={0.5}
-                initialZoom={1}
-                bindToBorders={true}
-                disablePanOnInitialZoom={true}
-                style={[styles.canvas, { borderColor: "#FF0000" }]}
-                contentWidth={wp(85)}
-                contentHeight={hp(100)}
-            >
 
-                {
-                    tablesList.map((table: any, index: number) => {
-                        return (
-                            <Draggable
-                                key={index}
-                                x={table.xAxis}
-                                y={table.yAxis}
-                                minX={0}
-                                maxX={wp(100) - hp(15)}
-                                minY={0}
-                                maxY={hp(90)}
-                                renderColor={COLORS.BACKGROUND}
-                                onDragRelease={(e) => { }}
+            <View style={styles.mapContainer}>
 
-                            >
-                                {getTable(table)}
-                            </Draggable>
-                        )
-                    })
-                }
+                <ReactNativeZoomableView
+                    maxZoom={2.5}
+                    minZoom={1}
+                    zoomStep={0.5}
+                    initialZoom={1}
+                    bindToBorders={true}
+                    disablePanOnInitialZoom={true}
+                    style={[styles.canvas, {}]}
+                    contentWidth={wp(85)}
+                    contentHeight={hp(100)}
+                >
 
-            </ReactNativeZoomableView>
+                    {
+                        getFilteredData().map((table: any, index: number) => {
+                            return (
+                                <Draggable
+                                    key={index}
+                                    x={table.xAxis}
+                                    y={table.yAxis}
+                                    minX={wp(1)}
+                                    maxX={wp(100) - hp(15)}
+                                    minY={hp(1)}
+                                    maxY={hp(90)}
+                                    renderColor={COLORS.BACKGROUND}
+                                    onDragRelease={(e) => { }}
+
+                                >
+                                    {getTable(table)}
+                                </Draggable>
+                            )
+                        })
+                    }
+
+                </ReactNativeZoomableView>
+
+                <ZoneSelector />
+            </View>
+
+
             <AddTableMenu />
 
             <TableDetailModal
@@ -129,7 +147,11 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         backgroundColor: COLORS.BACKGROUND,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderColor: COLORS.DANGER
+    },
+    mapContainer: {
+        flex: 1,
     },
     canvas: {
         flex: 1,

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
 import { EightPerson, FourPerson, SixPerson, ThreePerson, TwoPerson } from '.'
 import { COLORS, FONTS, hp, normalize } from '../assets/styles/styleGuide'
 import { boardStateSelectors, useBoard } from '../states/board'
@@ -9,7 +9,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { useNavigation } from '@react-navigation/native'
 import { SCREENS } from '../assets/enums'
 
-const AddTableMenu = () => {
+const AddTableMenu: FC = () => {
   const navigation = useNavigation()
   const tablesList = useBoard(boardStateSelectors.tablesList)
   const setTablesList = useBoard(boardStateSelectors.setTablesList)

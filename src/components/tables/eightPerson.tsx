@@ -4,6 +4,7 @@ import { COLORS, FONTS, hp } from '../../assets/styles/styleGuide'
 import { GestureDetector, Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { getAssetColor, getChairColor } from '../../utils/myUtils';
 import { boardStateSelectors, useBoard } from '../../states/board';
+import { BOOK_STATUS } from '../../assets/enums';
 
 interface props {
     size?: number;
@@ -18,7 +19,7 @@ interface props {
 
 const EightPerson: FC<props> = (props) => {
     const {
-        size = 10,
+        size = 12,
         disabled = false,
         onPressTable = () => { },
         data = {},
@@ -97,10 +98,20 @@ const EightPerson: FC<props> = (props) => {
                     onPress={() => onPressTable()}
                     disabled={disabled}
                 >
-                    <Text
-                        adjustsFontSizeToFit={true}
-                        numberOfLines={1}
-                        style={styles.txt}>{data.id}</Text>
+                    {(!disabled) &&
+                        <Text
+                            adjustsFontSizeToFit={true}
+                            numberOfLines={1}
+                            style={styles.txt}>T{data.id}</Text>
+                    }
+
+                    {(data.tableStatus != BOOK_STATUS.EMPTY && !disabled) &&
+                        <Text
+                            adjustsFontSizeToFit={true}
+                            numberOfLines={1}
+                            style={styles.txt}>08:00 pm</Text>
+                    }
+
                 </TouchableOpacity>
 
                 <TouchableOpacity

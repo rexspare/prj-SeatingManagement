@@ -1,12 +1,12 @@
 import {ViewStyle, View } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
 
 interface spacerProps {
     styles?: ViewStyle;
     height ?: number;
 }
 
-const Spacer = ({ styles, height = 100 }: spacerProps) => {
+const Spacer:FC = ({ styles, height = 100 }: spacerProps) => {
     return (
         <View style={[{
             width: '100%',

@@ -7,6 +7,7 @@ import Loader from "./loader";
 import LoaderRoot from "./loaderRoot";
 import PrimaryButton from "./primaryButton";
 import AddTableMenu from "./addTableMenu";
+import ZoneSelector from "./zoneSelector";
 
 export * from './tables'
 export * from './modals'
@@ -20,5 +21,6 @@ export {
     Loader,
     LoaderRoot,
     PrimaryButton,
-    AddTableMenu
+    AddTableMenu,
+    ZoneSelector
 }
