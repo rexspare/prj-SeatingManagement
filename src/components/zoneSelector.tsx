@@ -44,13 +44,13 @@ export default ZoneSelector
 
 const styles = StyleSheet.create({
     main: {
-        width: wp(85),
+        width: '100%',
         height: hp(8),
         justifyContent: 'center',
         flexDirection: 'row',
         borderTopWidth: 1,
         borderColor: COLORS.GREY,
-        paddingTop: hp(1)
+        paddingTop: hp(1),
     },
     btn: {
         height: hp(4),

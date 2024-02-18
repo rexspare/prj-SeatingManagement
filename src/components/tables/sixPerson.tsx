@@ -45,7 +45,8 @@ const SixPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 0),
-                        transform: [{ rotate: isRound ? '155deg' : '0deg' }]
+                        transform: [{ rotate: isRound ? '150deg' : '0deg' }],
+                        marginBottom: isRound ? - (getSize() * 0.1) : 0
                     }]}
                     onPress={() => onPressChair(0)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
@@ -55,7 +56,8 @@ const SixPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 1),
-                        transform: [{ rotate: isRound ? '20deg' : '0deg' }]
+                        transform: [{ rotate: isRound ? '25deg' : '0deg' }],
+                        marginBottom: isRound ? - (getSize() * 0.1) : 0
                     }]}
                     onPress={() => onPressChair(1)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
@@ -112,7 +114,8 @@ const SixPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 4),
-                        transform: [{ rotate: isRound ? '20deg' : '0deg' }]
+                        transform: [{ rotate: isRound ? '25deg' : '0deg' }],
+                        marginTop: isRound ? - (getSize() * 0.1) : 0
                     }]}
                     onPress={() => onPressChair(4)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
@@ -123,7 +126,8 @@ const SixPerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 5),
-                        transform: [{ rotate: isRound ? '155deg' : '0deg' }]
+                        transform: [{ rotate: isRound ? '150deg' : '0deg' }],
+                        marginTop: isRound ? - (getSize() * 0.1) : 0
                     }]}
                     onPress={() => onPressChair(5)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}

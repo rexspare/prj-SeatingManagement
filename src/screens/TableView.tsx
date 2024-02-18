@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Draggable from 'react-native-draggable';
 import { COLORS, hp, wp } from '../assets/styles/styleGuide';
-import { AddTableMenu, ChairStatusModal, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwoPerson, ZoneSelector } from '../components';
+import { AddTableMenu, ChairStatusModal, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwelvePerson, TwoPerson, ZoneSelector } from '../components';
 import { boardStateSelectors, useBoard } from '../states/board';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
@@ -57,6 +57,13 @@ const TableView: FC = () => {
                 />
             case "8P":
                 return <EightPerson
+                    data={table}
+                    isRound={table?.isRound}
+                    onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
+                />
+            case "12P":
+                return <TwelvePerson
                     data={table}
                     isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}

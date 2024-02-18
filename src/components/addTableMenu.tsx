@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { FC } from 'react'
-import { EightPerson, FourPerson, SixPerson, ThreePerson, TwoPerson } from '.'
+import { EightPerson, FourPerson, SixPerson, ThreePerson, TwelvePerson, TwoPerson } from '.'
 import { COLORS, FONTS, hp, normalize } from '../assets/styles/styleGuide'
 import { boardStateSelectors, useBoard } from '../states/board'
 import { generateRandomId } from '../utils/myUtils'
@@ -44,6 +44,12 @@ const AddTableMenu: FC = () => {
       title: "8 Person",
       icon: <EightPerson defaultSize={hp(6)} disabled={true} />,
       type: "8P"
+    },
+    {
+      id: 6,
+      title: "12 Person",
+      icon: <TwelvePerson defaultSize={hp(6)} disabled={true} />,
+      type: "12P"
     },
   ]
 
