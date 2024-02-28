@@ -1,10 +1,27 @@
+import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 import React, { FC, useRef, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Draggable from 'react-native-draggable';
 import { COLORS, hp, wp } from '../assets/styles/styleGuide';
-import { AddTableMenu, ChairStatusModal, EightPerson, ElevenPerson, FivePerson, FourPerson, NinePerson, OnePerson, SevenPerson, SixPerson, TableDetailModal, TenPerson, ThreePerson, TwelvePerson, TwoPerson, ZoneSelector } from '../components';
+import {
+    AddTableMenu,
+    ChairStatusModal,
+    EightPerson,
+    ElevenPerson,
+    FivePerson,
+    FourPerson,
+    NinePerson,
+    OnePerson,
+    SevenPerson,
+    SixPerson,
+    TableDetailModal,
+    TenPerson,
+    ThreePerson,
+    TwelvePerson,
+    TwoPerson,
+    ZoneSelector
+} from '../components';
 import { boardStateSelectors, useBoard } from '../states/board';
-import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
 
 const TableView: FC = () => {
@@ -165,7 +182,7 @@ const TableView: FC = () => {
                                     maxX={wp(100) - hp(15)}
                                     minY={hp(1)}
                                     maxY={hp(90)}
-                                    renderColor={COLORS.BACKGROUND}
+                                    renderColor={'transparent'}
                                     onDragRelease={(e) => { }}
 
                                 >
