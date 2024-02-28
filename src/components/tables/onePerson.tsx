@@ -15,7 +15,7 @@ interface props {
     isRound?: boolean;
 }
 
-const ThreePerson: FC<props> = (props) => {
+const OnePerson: FC<props> = (props) => {
     const {
         size = 7,
         disabled = false,
@@ -37,7 +37,9 @@ const ThreePerson: FC<props> = (props) => {
         }
     }
 
+
     const styles = styles_(getSize(), disabled, data, isRound)
+
 
     return (
         <View style={styles.main}>
@@ -46,61 +48,40 @@ const ThreePerson: FC<props> = (props) => {
                 style={[styles.chair, {
                     backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 0),
                 }]}
-                onPress={() => onPressChair(0)}
+                onPress={() => onPressChair(2)}
                 hitSlop={{ top: 10, bottom: 0, left: 5, right: 5 }}
                 disabled={disabled}
             >
             </TouchableOpacity>
 
-            <View style={styles.row}>
-
-                <TouchableOpacity
-                    style={styles.table}
-                    onPress={() => onPressTable()}
-                    disabled={disabled}
-                >
-                    {(!disabled) &&
-                        <Text
-                            adjustsFontSizeToFit={true}
-                            numberOfLines={1}
-                            style={[styles.txt, getTableTxtStyle(tableSize)]}>{data.index + 1}</Text>
-                    }
-
-                    {(data.tableStatus != BOOK_STATUS.EMPTY && !disabled) &&
-                        <Text
-                            adjustsFontSizeToFit={true}
-                            numberOfLines={1}
-                            style={[styles.txt, getTableTxtStyle(tableSize)]}>08:00</Text>
-                    }
-
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={[styles.chair2, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 1),
-                    }]}
-                    onPress={() => onPressChair(1)}
-                    hitSlop={{ top: 0, bottom: 0, left: 0, right: 10 }}
-                    disabled={disabled}
-                >
-                </TouchableOpacity>
-            </View>
 
             <TouchableOpacity
-                style={[styles.chair, {
-                    backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 2),
-                }]}
-                onPress={() => onPressChair(2)}
-                hitSlop={{ top: 0, bottom: 10, left: 5, right: 5 }}
+                style={styles.table}
+                onPress={() => onPressTable()}
                 disabled={disabled}
             >
+
+                {(!disabled) &&
+                    <Text
+                        adjustsFontSizeToFit={true}
+                        numberOfLines={1}
+                        style={[styles.txt, getTableTxtStyle(tableSize)]}>{data.index + 1}</Text>
+                }
+
+                {(data.tableStatus != BOOK_STATUS.EMPTY && !disabled) &&
+                    <Text
+                        adjustsFontSizeToFit={true}
+                        numberOfLines={1}
+                        style={[styles.txt, getTableTxtStyle(tableSize)]}>08:00</Text>
+                }
+
             </TouchableOpacity>
 
         </View>
     )
 }
 
-export default ThreePerson
+export default OnePerson
 
 const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => StyleSheet.create({
     main: {
@@ -116,20 +97,11 @@ const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => S
         justifyContent: 'center',
         alignItems: 'center'
     },
-    row: {
-        flexDirection: 'row'
-    },
+
     chair: {
         width: size * 0.6,
         height: size * 0.1,
-        backgroundColor: disabled ? COLORS.BLACK : COLORS.SUCCESS,
         alignSelf: 'center',
-    },
-    chair2: {
-        width: size * 0.1,
-        height: size * 0.6,
-        backgroundColor: disabled ? COLORS.BLACK : COLORS.SUCCESS,
-        alignSelf: 'center'
     },
     txt: {
         fontFamily: FONTS.POPPINS_500,

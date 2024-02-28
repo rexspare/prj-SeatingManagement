@@ -15,7 +15,7 @@ interface props {
     isRound?: boolean;
 }
 
-const SixPerson: FC<props> = (props) => {
+const FivePerson: FC<props> = (props) => {
     const {
         size = 10,
         disabled = false,
@@ -99,21 +99,12 @@ const SixPerson: FC<props> = (props) => {
 
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    style={[styles.chair2, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 3),
-                    }]}
-                    onPress={() => onPressChair(3)}
-                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                    disabled={disabled}
-                >
-                </TouchableOpacity>
             </View>
 
             <View style={styles.rowChair}>
                 <TouchableOpacity
                     style={[styles.chair, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 4),
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 3),
                         transform: [{ rotate: isRound ? '25deg' : '0deg' }],
                         marginTop: isRound ? - (getSize() * 0.1) : 0
                     }]}
@@ -125,7 +116,7 @@ const SixPerson: FC<props> = (props) => {
 
                 <TouchableOpacity
                     style={[styles.chair, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 5),
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 4),
                         transform: [{ rotate: isRound ? '150deg' : '0deg' }],
                         marginTop: isRound ? - (getSize() * 0.1) : 0
                     }]}
@@ -141,7 +132,7 @@ const SixPerson: FC<props> = (props) => {
     )
 }
 
-export default SixPerson
+export default FivePerson
 
 const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => StyleSheet.create({
     main: {

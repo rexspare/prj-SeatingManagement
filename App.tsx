@@ -4,6 +4,7 @@ import Root from './src/navigation/root';
 import { boardStateSelectors, useBoard } from './src/states/board';
 import { getItem } from './src/services/asyncStorage';
 import { ASYNC_KEYS } from './src/assets/enums';
+import { MenuProvider } from 'react-native-popup-menu';
 
 const App = () => {
   const settableSize = useBoard(boardStateSelectors.settableSize)
@@ -25,9 +26,9 @@ const App = () => {
   }
 
   return (
-    <>
+    <MenuProvider>
       <Root />
-    </>
+    </MenuProvider>
   )
 }
 

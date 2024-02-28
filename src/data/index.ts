@@ -228,12 +228,27 @@ const TABLES = [
         ]
     },
     {
+        id: 53,
+        type: "1P",
+        zone: 2,
+        isRound: true,
+        xAxis: wp(70),
+        yAxis: hp(25),
+        tableStatus: BOOK_STATUS.EMPTY,
+        chairs: [
+            {
+                id: 1,
+                chairStatus: BOOK_STATUS.EMPTY
+            },
+        ]
+    },
+    {
         id: 6,
         type: "4P",
         isRound: false,
         zone: 1,
         xAxis: wp(30),
-        yAxis: hp(65),
+        yAxis: hp(45),
         tableStatus: BOOK_STATUS.OCCUPIED,
         chairs: [
             {
@@ -331,6 +346,19 @@ const ZONE_LIST = [
     },
 ]
 
+const TABLE_1P = {
+    type: "1P",
+    xAxis: wp(40),
+    yAxis: hp(45),
+    tableStatus: BOOK_STATUS.EMPTY,
+    chairs: [
+        {
+            id: 1,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+    ]
+}
+
 const TABLE_2P = {
     type: "2P",
     xAxis: wp(40),
@@ -394,6 +422,35 @@ const TABLE_4P = {
     ]
 }
 
+const TABLE_5P = {
+    type: "5P",
+    xAxis: wp(40),
+    yAxis: hp(45),
+    tableStatus: BOOK_STATUS.EMPTY,
+    chairs: [
+        {
+            id: 1,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 2,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 3,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 4,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 5,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+    ]
+}
+
 const TABLE_6P = {
     type: "6P",
     xAxis: wp(40),
@@ -422,6 +479,42 @@ const TABLE_6P = {
         },
         {
             id: 6,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+    ]
+}
+const TABLE_7P = {
+    type: "7P",
+    xAxis: wp(40),
+    yAxis: hp(45),
+    tableStatus: BOOK_STATUS.EMPTY,
+    chairs: [
+        {
+            id: 1,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 2,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 3,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 4,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 5,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 6,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 7,
             chairStatus: BOOK_STATUS.EMPTY
         },
     ]
@@ -466,6 +559,151 @@ const TABLE_8P = {
             chairStatus: BOOK_STATUS.EMPTY
         },
 
+    ]
+}
+
+const TABLE_9P = {
+    type: "9P",
+    xAxis: wp(40),
+    yAxis: hp(45),
+    tableStatus: BOOK_STATUS.EMPTY,
+    chairs: [
+        {
+            id: 1,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 2,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 3,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 4,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 5,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 6,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 7,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 8,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 9,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+    ]
+}
+const TABLE_10P = {
+    type: "10P",
+    xAxis: wp(40),
+    yAxis: hp(45),
+    tableStatus: BOOK_STATUS.EMPTY,
+    chairs: [
+        {
+            id: 1,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 2,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 3,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 4,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 5,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 6,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 7,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 8,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 9,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 10,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+    ]
+}
+const TABLE_11P = {
+    type: "11P",
+    xAxis: wp(40),
+    yAxis: hp(45),
+    tableStatus: BOOK_STATUS.EMPTY,
+    chairs: [
+        {
+            id: 1,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 2,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 3,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 4,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 5,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 6,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 7,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 8,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 9,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 10,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
+        {
+            id: 11,
+            chairStatus: BOOK_STATUS.EMPTY
+        },
     ]
 }
 
@@ -529,10 +767,16 @@ const TABLE_12P = {
 export {
     TABLES,
     ZONE_LIST,
+    TABLE_1P,
     TABLE_2P,
     TABLE_3P,
     TABLE_4P,
+    TABLE_5P,
     TABLE_6P,
+    TABLE_7P,
     TABLE_8P,
+    TABLE_9P,
+    TABLE_10P,
+    TABLE_11P,
     TABLE_12P
 }

@@ -17,7 +17,7 @@ interface props {
 }
 
 
-const TwelvePerson: FC<props> = (props) => {
+const TenPerson: FC<props> = (props) => {
     const {
         size = 14,
         disabled = false,
@@ -96,22 +96,14 @@ const TwelvePerson: FC<props> = (props) => {
                         disabled={disabled}
                     >
                     </TouchableOpacity>
+               
                     <TouchableOpacity
                         style={[styles.chair2, {
                             backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 4),
-                        }]}
-                        onPress={() => onPressChair(4)}
-                        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                        disabled={disabled}
-                    >
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={[styles.chair2, {
-                            backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 5),
                             transform: [{ rotate: isRound ? '145deg' : '0deg' }],
                             marginRight: isRound ? -(getSize() * 0.15) : 0
                         }]}
-                        onPress={() => onPressChair(5)}
+                        onPress={() => onPressChair(4)}
                         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                         disabled={disabled}
                     >
@@ -142,31 +134,23 @@ const TwelvePerson: FC<props> = (props) => {
                 <View style={styles.verticalContainer}>
                     <TouchableOpacity
                         style={[styles.chair2, {
-                            backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 6),
+                            backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 5),
                             transform: [{ rotate: isRound ? '150deg' : '0deg' }],
                             marginLeft: isRound ? -(getSize() * 0.15) : 0
                         }]}
-                        onPress={() => onPressChair(6)}
+                        onPress={() => onPressChair(5)}
                         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                         disabled={disabled}
                     >
                     </TouchableOpacity>
+               
                     <TouchableOpacity
                         style={[styles.chair2, {
-                            backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 7),
-                        }]}
-                        onPress={() => onPressChair(7)}
-                        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                        disabled={disabled}
-                    >
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={[styles.chair2, {
-                            backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 8),
+                            backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 6),
                             transform: [{ rotate: isRound ? '30deg' : '0deg' }],
                             marginLeft: isRound ? -(getSize() * 0.15) : 0
                         }]}
-                        onPress={() => onPressChair(8)}
+                        onPress={() => onPressChair(6)}
                         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                         disabled={disabled}
                     >
@@ -178,11 +162,11 @@ const TwelvePerson: FC<props> = (props) => {
             <View style={styles.rowChair}>
                 <TouchableOpacity
                     style={[styles.chair, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 9),
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 7),
                         transform: [{ rotate: isRound ? '30deg' : '0deg' }],
                         marginTop: isRound ? -(getSize() * 0.15) : 0
                     }]}
-                    onPress={() => onPressChair(9)}
+                    onPress={() => onPressChair(7)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
@@ -190,9 +174,9 @@ const TwelvePerson: FC<props> = (props) => {
 
                 <TouchableOpacity
                     style={[styles.chair, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 10),
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 8),
                     }]}
-                    onPress={() => onPressChair(10)}
+                    onPress={() => onPressChair(8)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
@@ -200,11 +184,11 @@ const TwelvePerson: FC<props> = (props) => {
 
                 <TouchableOpacity
                     style={[styles.chair, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 11),
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 9),
                         transform: [{ rotate: isRound ? '150deg' : '0deg' }],
                         marginTop: isRound ? -(getSize() * 0.15) : 0
                     }]}
-                    onPress={() => onPressChair(11)}
+                    onPress={() => onPressChair(9)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
@@ -217,7 +201,7 @@ const TwelvePerson: FC<props> = (props) => {
     )
 }
 
-export default TwelvePerson
+export default TenPerson
 
 const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => StyleSheet.create({
     main: {
@@ -226,7 +210,7 @@ const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => S
     },
     table: {
         width: size,
-        height: size,
+        height: isRound ? size : size / 1.4,
         borderRadius: isRound ? size : 0,
         backgroundColor: disabled ? COLORS.BLACK : getAssetColor(data.tableStatus),
         margin: (size * 0.1) > 5 ? 5 : size * 0.1,
@@ -259,7 +243,7 @@ const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => S
 
     },
     verticalContainer: {
-        height: isRound ? size * 0.8 : size,
+        height: isRound ? size * 0.8 : size / 1.4,
         justifyContent: 'space-between',
         alignItems: 'center',
         alignContent: 'center',

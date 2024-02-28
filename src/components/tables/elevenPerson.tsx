@@ -17,7 +17,7 @@ interface props {
 }
 
 
-const TwelvePerson: FC<props> = (props) => {
+const ElevenPerson: FC<props> = (props) => {
     const {
         size = 14,
         disabled = false,
@@ -151,22 +151,14 @@ const TwelvePerson: FC<props> = (props) => {
                         disabled={disabled}
                     >
                     </TouchableOpacity>
+                  
                     <TouchableOpacity
                         style={[styles.chair2, {
                             backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 7),
-                        }]}
-                        onPress={() => onPressChair(7)}
-                        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                        disabled={disabled}
-                    >
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={[styles.chair2, {
-                            backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 8),
                             transform: [{ rotate: isRound ? '30deg' : '0deg' }],
                             marginLeft: isRound ? -(getSize() * 0.15) : 0
                         }]}
-                        onPress={() => onPressChair(8)}
+                        onPress={() => onPressChair(7)}
                         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                         disabled={disabled}
                     >
@@ -178,9 +170,19 @@ const TwelvePerson: FC<props> = (props) => {
             <View style={styles.rowChair}>
                 <TouchableOpacity
                     style={[styles.chair, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 9),
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 8),
                         transform: [{ rotate: isRound ? '30deg' : '0deg' }],
                         marginTop: isRound ? -(getSize() * 0.15) : 0
+                    }]}
+                    onPress={() => onPressChair(8)}
+                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                    disabled={disabled}
+                >
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[styles.chair, {
+                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 9),
                     }]}
                     onPress={() => onPressChair(9)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
@@ -191,20 +193,10 @@ const TwelvePerson: FC<props> = (props) => {
                 <TouchableOpacity
                     style={[styles.chair, {
                         backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 10),
-                    }]}
-                    onPress={() => onPressChair(10)}
-                    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                    disabled={disabled}
-                >
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={[styles.chair, {
-                        backgroundColor: disabled ? COLORS.BLACK : getChairColor(data, 11),
                         transform: [{ rotate: isRound ? '150deg' : '0deg' }],
                         marginTop: isRound ? -(getSize() * 0.15) : 0
                     }]}
-                    onPress={() => onPressChair(11)}
+                    onPress={() => onPressChair(10)}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     disabled={disabled}
                 >
@@ -217,7 +209,7 @@ const TwelvePerson: FC<props> = (props) => {
     )
 }
 
-export default TwelvePerson
+export default ElevenPerson
 
 const styles_ = (size: any, disabled: boolean, data: any, isRound: boolean) => StyleSheet.create({
     main: {

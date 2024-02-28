@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { FC, useRef, useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Draggable from 'react-native-draggable';
 import { COLORS, hp, wp } from '../assets/styles/styleGuide';
-import { AddTableMenu, ChairStatusModal, EightPerson, FourPerson, SixPerson, TableDetailModal, ThreePerson, TwelvePerson, TwoPerson, ZoneSelector } from '../components';
+import { AddTableMenu, ChairStatusModal, EightPerson, ElevenPerson, FivePerson, FourPerson, NinePerson, OnePerson, SevenPerson, SixPerson, TableDetailModal, TenPerson, ThreePerson, TwelvePerson, TwoPerson, ZoneSelector } from '../components';
 import { boardStateSelectors, useBoard } from '../states/board';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 
 
 const TableView: FC = () => {
+    const zoomRef = useRef<ReactNativeZoomableView>(null)
+
     const tablesList = useBoard(boardStateSelectors.tablesList)
     const selectedZone = useBoard(boardStateSelectors.selectedZone)
     const setSelectedTable = useBoard(boardStateSelectors.setSelectedTable)
@@ -20,13 +22,20 @@ const TableView: FC = () => {
         if (selectedZone == 0) {
             return tablesList
         } else {
-            const filtered = tablesList.filter((tb) => tb.zone == selectedZone)
+            const filtered = tablesList.filter((tb: any) => tb.zone == selectedZone)
             return filtered
         }
     }
 
     const getTable = (table: any) => {
         switch (table.type) {
+            case "1P":
+                return <OnePerson
+                    data={table}
+                    isRound={table?.isRound}
+                    onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
+                />
             case "2P":
                 return <TwoPerson
                     data={table}
@@ -48,6 +57,13 @@ const TableView: FC = () => {
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
+            case "5P":
+                return <FivePerson
+                    data={table}
+                    isRound={table?.isRound}
+                    onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
+                />
             case "6P":
                 return <SixPerson
                     data={table}
@@ -55,8 +71,36 @@ const TableView: FC = () => {
                     onPressTable={() => handleSelectTable(table)}
                     onPressChair={(idx: number) => handleSelectChair(table, idx)}
                 />
+            case "7P":
+                return <SevenPerson
+                    data={table}
+                    isRound={table?.isRound}
+                    onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
+                />
             case "8P":
                 return <EightPerson
+                    data={table}
+                    isRound={table?.isRound}
+                    onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
+                />
+            case "9P":
+                return <NinePerson
+                    data={table}
+                    isRound={table?.isRound}
+                    onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
+                />
+            case "10P":
+                return <TenPerson
+                    data={table}
+                    isRound={table?.isRound}
+                    onPressTable={() => handleSelectTable(table)}
+                    onPressChair={(idx: number) => handleSelectChair(table, idx)}
+                />
+            case "11P":
+                return <ElevenPerson
                     data={table}
                     isRound={table?.isRound}
                     onPressTable={() => handleSelectTable(table)}
@@ -90,15 +134,18 @@ const TableView: FC = () => {
         setisChairModalVisible(true)
     }
 
+    zoomRef.current?.zoomTo(1)
+
     return (
         <View style={styles.main}>
 
             <View style={styles.mapContainer}>
 
                 <ReactNativeZoomableView
+                    ref={zoomRef}
                     maxZoom={2.5}
-                    minZoom={1}
-                    zoomStep={0.5}
+                    minZoom={-0.5}
+                    zoomStep={0.25}
                     initialZoom={1}
                     bindToBorders={true}
                     disablePanOnInitialZoom={true}
@@ -122,11 +169,12 @@ const TableView: FC = () => {
                                     onDragRelease={(e) => { }}
 
                                 >
-                                    {getTable(table)}
+                                    {getTable({ ...table, index: index })}
                                 </Draggable>
                             )
                         })
                     }
+
 
                 </ReactNativeZoomableView>
 
@@ -162,16 +210,10 @@ const styles = StyleSheet.create({
     },
     canvas: {
         flex: 1,
-        shadowColor: "#000",
-        backgroundColor: COLORS.BACKGROUND,
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-
-        elevation: 3,
+    },
+    absoluteBtn: {
+        position: 'absolute',
+        top: 30
     }
 })
 

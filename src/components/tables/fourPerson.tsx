@@ -71,7 +71,7 @@ const FourPerson: FC<props> = (props) => {
                         <Text
                             adjustsFontSizeToFit={true}
                             numberOfLines={1}
-                            style={[styles.txt, getTableTxtStyle(tableSize)]}>{data.id}</Text>
+                            style={[styles.txt, getTableTxtStyle(tableSize)]}>{data.index + 1}</Text>
                     }
 
                     {(data.tableStatus != BOOK_STATUS.EMPTY && !disabled) &&
